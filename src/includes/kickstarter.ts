@@ -13,10 +13,7 @@ export async function start(context: ExtensionContext, className: string, state:
 		const menu = GuideFactory.create(className, state, context);
 		await MultiStepInput.run((input: MultiStepInput) => menu.start(input));
 	} catch (e) {
-		if (e instanceof Error) {
-			window.showWarningMessage(e.message);
-			console.debug(e);
-		}
+		errorHandling(e);
 	}
 
 	if (present(state.message)) {
@@ -34,4 +31,11 @@ export async function start(context: ExtensionContext, className: string, state:
 
 function present(value?: string): boolean {
 	return (value && value.length > 0) ? true : false;
+}
+
+function errorHandling(e: unknown) {
+	if (e instanceof Error) {
+		window.showWarningMessage(e.message);
+		console.debug(e);
+	}
 }
