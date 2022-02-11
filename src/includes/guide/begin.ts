@@ -1,4 +1,5 @@
 import { AbstractQuickPickSelectGuide } from './base/pick';
+import { State }                        from './base/base';
 
 const items = {
 	p2r:       { label: '$(export) px => rem',     description: 'Converts a px value to a rem value.' },
@@ -19,16 +20,22 @@ export class StartMenuGuide extends AbstractQuickPickSelectGuide {
 	protected getExecute(label: string | undefined): (() => Promise<void>) | undefined {
 		switch (label) {
 			case items.p2r.label:
-				return async () => { this.setNextSteps([{ key: 'PixelSizeGuide',     state: this.createBaseState(' - PX to REM', 'convert',  1) }]); };
+				return this.setNext('PixelSizeGuide', this.createBaseState(' - PX to REM', 'convert',  1));
 			case items.basePx.label:
-				return async () => { this.setNextSteps([{ key: 'BasePixelSizeGuide', state: this.createBaseState(' - Set the Base px', 'settingBasePx') }]); };
+				return this.setNext('BasePixelSizeGuide', this.createBaseState(' - Set the Base px', 'settingBasePx'));
 			case items.clipboard.label:
-				return async () => { this.setNextSteps([{ key: 'ClipboardGuide',     state: this.createBaseState(' - Set the clipboard setting', 'settingSendClipboard') }]); };
+				return this.setNext('ClipboardGuide', this.createBaseState(' - Set the clipboard setting', 'settingSendClipboard'));
 			case items.uninstall.label:
 				return this.uninstall();
 			default:
 				return undefined;
 		}
+	}
+
+	private setNext(className: string, state: Partial<State>): () => Promise<void> {
+		return async () => {
+			this.setNextSteps([{ key: className, state: state }]);
+		};
 	}
 
 	private uninstall(): () => Promise<void> {
