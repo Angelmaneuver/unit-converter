@@ -16,6 +16,7 @@ export class ExtensionSetting extends SettingBase {
 	}
 
 	public async setBasePx(value: number): Promise<void> {
+		this.basePx = value;
 		return this.update('basePx', value, defaultBasePx);
 	}
 
@@ -28,6 +29,7 @@ export class ExtensionSetting extends SettingBase {
 	}
 
 	public async setSendClipboard(value: boolean): Promise<void> {
+		this.sendClipboard = value;
 		return this.update('sendClipboard', value, defaultSendClipboard);
 	}
 }
