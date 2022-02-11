@@ -19,15 +19,19 @@ export async function start(context: ExtensionContext, className: string, state:
 		}
 	}
 
-	if (state.message && state.message.length > 0) {
-		window.showInformationMessage(state.message);
+	if (present(state.message)) {
+		window.showInformationMessage(state.message as string);
 	}
 
-	if (state.clipboard && state.clipboard.length > 0) {
-		env.clipboard.writeText(state.clipboard);
+	if (present(state.clipboard)) {
+		env.clipboard.writeText(state.clipboard as string);
 	}
 
 	if (state.reload) {
 		commands.executeCommand('workbench.action.reloadWindow');
 	}
+}
+
+function present(value?: string): boolean {
+	return (value && value.length > 0) ? true : false;
 }
