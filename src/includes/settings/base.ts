@@ -22,4 +22,12 @@ export class SettingBase {
 	public async remove(key: string): Promise<void> {
 		return this.set(key, undefined);
 	}
+
+	public async update(key: string, value: unknown, defaultValue: unknown): Promise<void> {
+		if (defaultValue === value) {
+			return this.remove(key);
+		} else {
+			return this.set(key, value);
+		}
+	}
 }

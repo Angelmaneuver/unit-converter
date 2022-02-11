@@ -16,13 +16,7 @@ export class ExtensionSetting extends SettingBase {
 	}
 
 	public async setBasePx(value: number): Promise<void> {
-		this.basePx = value;
-
-		if (defaultBasePx === value) {
-			return this.remove('basePx');
-		} else {
-			return this.set('basePx', value);
-		}
+		return this.update('basePx', value, defaultBasePx);
 	}
 
 	public getBasePx(): number {
@@ -34,12 +28,6 @@ export class ExtensionSetting extends SettingBase {
 	}
 
 	public async setSendClipboard(value: boolean): Promise<void> {
-		this.sendClipboard = value;
-
-		if (defaultSendClipboard === value) {
-			return this.remove('sendClipboard');
-		} else {
-			return this.set('sendClipboard', value);
-		}
+		return this.update('sendClipboard', value, defaultSendClipboard);
 	}
 }
