@@ -11,34 +11,32 @@ import { ClipboardGuide }   from '../clipboard';
 interface Constructable<T> extends Function { new (...args: Array<any>): T; }
 
 export abstract class GuideFactory {
-	private static guides: Array<Constructable<AbstractGuide>> = [];
+	private static guides: Record<string, Constructable<AbstractGuide>> = {};
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	public static create(className: string, ...args: Array<any>): AbstractGuide {
-		if (this.guides.length === 0) {
+		if (0 === Object.keys(this.guides).length) {
 			this.init();
 		}
 
-		const classObject = this.guides.find(
-			(guide) => {
-				return guide.name === className;
-			}
-		);
+		const guideName = Object.keys(this.guides).find(guide => guide === className);
 
-		if (classObject) {
-			return new classObject(...args);
+		if (guideName) {
+			return new this.guides[guideName](...args);
 		} else {
 			throw new ReferenceError('Requested ' + className + ' class not found...');
 		}
 	}
 
 	private static init(): void {
-		this.guides.push(
-			StartMenuGuide,
-			BaseConfirmGuide,
-			PixelSizeGuide,
-			BasePixelSizeGuide,
-			ClipboardGuide
-		);
+		/* eslint-disable @typescript-eslint/naming-convention */
+		this.guides = {
+			StartMenuGuide:     StartMenuGuide,
+			BaseConfirmGuide:   BaseConfirmGuide,
+			PixelSizeGuide:     PixelSizeGuide,
+			BasePixelSizeGuide: BasePixelSizeGuide,
+			ClipboardGuide:     ClipboardGuide,
+		};
+		/* eslint-enable @typescript-eslint/naming-convention */
 	}
 }
