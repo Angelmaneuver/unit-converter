@@ -4,7 +4,7 @@
 	"description": "Convert and display size units.",
 	"publisher": "Angelmaneuver",
 	"version": "0.0.1",
-	"homepage": "",
+	"homepage": "https://github.com/Angelmaneuver/unit-converter/blob/main/README.md#unit-converter",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Angelmaneuver/unit-converter.git"
