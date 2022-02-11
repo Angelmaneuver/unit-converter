@@ -1,6 +1,6 @@
 # Unit Converter
 
-![GitHub package.json dynamic](https://img.shields.io/github/package-json/categories/angelmaneuver/unit-converter?color=green) ![Visual Studio Marketplace Last Updated](https://img.shields.io/visual-studio-marketplace/last-updated/angelmaneuver.unit-converter) ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/Angelmaneuver.unit-converter) [![License](https://img.shields.io/github/license/Angelmaneuver/unit-converter)](LICENSE)
+![GitHub package.json dynamic](https://img.shields.io/github/package-json/categories/angelmaneuver/unit-converter?color=green) ![Visual Studio Marketplace Last Updated](https://img.shields.io/visual-studio-marketplace/last-updated/angelmaneuver.unit-converter) ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/Angelmaneuver.unit-converter) <a href="https://codeclimate.com/github/Angelmaneuver/unit-converter/maintainability"><img src="https://api.codeclimate.com/v1/badges/ecc8c52649d86899e617/maintainability" /></a> [![License](https://img.shields.io/github/license/Angelmaneuver/unit-converter)](LICENSE)
 
 Convert and display size units.
 
