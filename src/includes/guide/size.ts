@@ -20,12 +20,12 @@ export class PixelSizeGuide extends AbstractSizeGuide {
 	}
 
 	protected async lastInputStepExecute(): Promise<void> {
-		const basePx = this.settings.getBasePx();
+		const basePx = this.settings.basePx;
 		const p2r    = Number(this.guideGroupResultSet[this.itemId]) / basePx;
 
 		this.state.message = `${p2r}rem`;
 
-		if (this.settings.getSendClipboard()) {
+		if (this.settings.sendClipboard) {
 			this.state.clipboard = `${p2r}`;
 		}
 	}
@@ -37,7 +37,7 @@ export class PixelSizeGuide extends AbstractSizeGuide {
 
 export class BasePixelSizeGuide extends PixelSizeGuide {
 	public init(): void {
-		this.state.initailValue = String(this.settings.getBasePx());
+		this.state.initailValue = String(this.settings.basePx);
 
 		super.init();
 	}

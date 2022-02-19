@@ -1,18 +1,31 @@
-import * as vscode  from 'vscode';
-import { guidance } from './includes/guidance';
-import { p2r }      from './includes/direct';
+import * as vscode                           from 'vscode';
+import { ExtensionSetting }                  from './includes/settings/extension';
+import { guidance }                          from './includes/guidance';
+import { p2r }                               from './includes/direct';
+import { rem2PxTarget, Rem2PxHoverProvider } from './includes/provider/hover/rem2px';
+import { px2RemTarget, Px2RemHoverProvider } from './includes/provider/hover/px2rem';
 
 export function activate(context: vscode.ExtensionContext) {
+	const settings = new ExtensionSetting();
+
 	context.subscriptions.push(
 		vscode.commands.registerCommand('unit-converter.guidance', () => {
-			guidance(context);
+			guidance(context, settings);
 		})
 	);
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('unit-converter.p2r', () => {
-			p2r(context);
+			p2r(context, settings);
 		})
+	);
+
+	context.subscriptions.push(
+		vscode.languages.registerHoverProvider(rem2PxTarget, new Rem2PxHoverProvider(settings))
+	);
+
+	context.subscriptions.push(
+		vscode.languages.registerHoverProvider(px2RemTarget, new Px2RemHoverProvider(settings))
 	);
 }
 

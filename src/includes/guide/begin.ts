@@ -47,8 +47,8 @@ export class StartMenuGuide extends AbstractQuickPickSelectGuide {
 				args:  [
 					{ yes: 'Uninstall.', no: 'Back to previous.' },
 					( async () => {
-						this.settings.remove('basePx');
-						this.settings.remove('sendClipboard');
+						this.settings.setBasePx(16);
+						this.settings.setSendClipboard(true);
 					} )
 				]
 			}]);

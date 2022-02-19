@@ -37,6 +37,13 @@ The conversion result is displayed and the value is copied to the clipboard.
 
 ![Convert px to rem image2](resource/readme/convert_px_to_rem2.png)
 
+### Display px and rem value
+Display the conversion value (px <=> rem) when on mouse is hovered over a px or rem value in the editor (Languages: HTML, CSS, SCSS).
+
+![Display px and rem image1](resource/readme/display_px_and_rem1.png)
+
+![Display px and rem image2](resource/readme/display_px_and_rem2.png)
+
 ### Uninstall
 Didn't like this extension?
 

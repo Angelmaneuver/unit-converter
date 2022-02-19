@@ -5,31 +5,31 @@ const defaultBasePx        = 16;
 const defaultSendClipboard = true;
 
 export class ExtensionSetting extends SettingBase {
-	private basePx:        number;
-	private sendClipboard: boolean;
+	private _basePx:        number;
+	private _sendClipboard: boolean;
 
 	constructor() {
 		super('unit-converter', ConfigurationTarget.Global);
 
-		this.basePx        = this.get('basePx') as number;
-		this.sendClipboard = this.get('sendClipboard') as boolean;
+		this._basePx        = this.get('basePx') as number;
+		this._sendClipboard = this.get('sendClipboard') as boolean;
 	}
 
 	public async setBasePx(value: number): Promise<void> {
-		this.basePx = value;
+		this._basePx = value;
 		return this.update('basePx', value, defaultBasePx);
 	}
 
-	public getBasePx(): number {
-		return this.basePx;
-	}
-
-	public getSendClipboard(): boolean {
-		return this.sendClipboard;
+	public get basePx(): number {
+		return this._basePx;
 	}
 
 	public async setSendClipboard(value: boolean): Promise<void> {
-		this.sendClipboard = value;
+		this._sendClipboard = value;
 		return this.update('sendClipboard', value, defaultSendClipboard);
+	}
+
+	public get sendClipboard(): boolean {
+		return this._sendClipboard;
 	}
 }

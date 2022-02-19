@@ -11,7 +11,7 @@ export class ClipboardGuide extends BaseQuickPickGuide {
 
 		this.placeholder = 'When displaying conversion results, do you want to copy the conversion result values to the clipboard?';
         this.items       = this.items.concat(items.yes, items.no);
-		this.activeItem  = this.settings.getSendClipboard() ? this.items[0] : this.items[1];
+		this.activeItem  = this.settings.sendClipboard ? this.items[0] : this.items[1];
 	}
 
 	protected async inputStepAfter(): Promise<void> {

@@ -3,7 +3,7 @@
 	"displayName": "Unit Converter",
 	"description": "Convert and display size units.",
 	"publisher": "Angelmaneuver",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"homepage": "https://github.com/Angelmaneuver/unit-converter/blob/main/README.md#unit-converter",
 	"repository": {
 		"type": "git",
@@ -26,6 +26,7 @@
 		"Mac"
 	],
 	"activationEvents": [
+		"onStartupFinished",
 		"onCommand:unit-converter.guidance",
 		"onCommand:unit-converter.p2r"
 	],
