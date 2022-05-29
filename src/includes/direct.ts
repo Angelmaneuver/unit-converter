@@ -14,3 +14,15 @@ export async function p2r(context: ExtensionContext, settings: ExtensionSetting)
 
 	start(context, 'PixelSizeGuide', state);
 }
+
+export async function r2p(context: ExtensionContext, settings: ExtensionSetting): Promise<void> {
+	const state = {
+		title:      'Unit Converter - REM to PX',
+		itemId:     'convert',
+		totalSteps: 1,
+		resultSet:  {},
+		settings:   settings,
+	} as Partial<State>;
+
+	start(context, 'RemSizeGuide', state);
+}

@@ -4,6 +4,7 @@ import { BaseConfirmGuide } from '../confirm';
 import {
 	PixelSizeGuide,
 	BasePixelSizeGuide,
+	RemSizeGuide,
 }                           from '../size';
 import { ClipboardGuide }   from '../clipboard';
 
@@ -35,6 +36,7 @@ export abstract class GuideFactory {
 			BaseConfirmGuide:   BaseConfirmGuide,
 			PixelSizeGuide:     PixelSizeGuide,
 			BasePixelSizeGuide: BasePixelSizeGuide,
+			RemSizeGuide:       RemSizeGuide,
 			ClipboardGuide:     ClipboardGuide,
 		};
 		/* eslint-enable @typescript-eslint/naming-convention */

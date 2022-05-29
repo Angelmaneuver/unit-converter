@@ -10,7 +10,7 @@
 			"type": "extensionHost",
 			"request": "launch",
 			"args": [
-				"--disable-extensions",
+				"--disable-extension=angelmaneuver.unit-converter",
 				"--extensionDevelopmentPath=${workspaceFolder}",
 			],
 			"outFiles": [

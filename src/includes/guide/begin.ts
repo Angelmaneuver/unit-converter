@@ -3,6 +3,7 @@ import { State }                        from './base/base';
 
 const items = {
 	p2r:       { label: '$(export) px => rem',     description: 'Converts a px value to a rem value.' },
+	r2p:       { label: '$(export) rem => px',     description: 'Converts a rem value to a px value.' },
 	basePx:    { label: '$(whitespace) Base px',   description: 'Set the base px size to be used for conversion.' },
 	clipboard: { label: '$(go-to-file) Clipboard', description: 'Set the clipboard setting.' },
 	uninstall: { label: '$(trashcan) Uninstall',   description: 'Remove all parameters for this extension.' },
@@ -14,13 +15,15 @@ export class StartMenuGuide extends AbstractQuickPickSelectGuide {
 		super.init();
 
 		this.placeholder = 'Select the item you want to do.';
-		this.items       = this.items.concat(items.p2r, items.basePx, items.clipboard, items.uninstall, items.exit);
+		this.items       = this.items.concat(items.p2r, items.r2p, items.basePx, items.clipboard, items.uninstall, items.exit);
 	}
 
 	protected getExecute(label: string | undefined): (() => Promise<void>) | undefined {
 		switch (label) {
 			case items.p2r.label:
-				return this.setNext('PixelSizeGuide', this.createBaseState(' - PX to REM', 'convert',  1));
+				return this.setNext('PixelSizeGuide', this.createBaseState(' - PX to REM', 'convert', 1));
+			case items.r2p.label:
+				return this.setNext('RemSizeGuide',   this.createBaseState(' - REM to PX', 'convert', 1));
 			case items.basePx.label:
 				return this.setNext('BasePixelSizeGuide', this.createBaseState(' - Set the Base px', 'settingBasePx'));
 			case items.clipboard.label:
